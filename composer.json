@@ -1,0 +1,10 @@
+{
+    "name": "zietlow/drupal-ci",
+    "authors": [
+        {
+            "name": "chris.zietlow",
+            "email": "aczietlow@gmail.com"
+        }
+    ],
+    "require": {}
+}
