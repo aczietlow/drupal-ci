@@ -6,5 +6,23 @@
             "email": "aczietlow@gmail.com"
         }
     ],
-    "require": {}
+    "type": "project",
+    "require": {
+        "behat/behat": "3.0.*@dev",
+        "drush/drush": "6.*",
+    }
+    "config": {
+        "bin-dir": "bin",
+        "process-timeout": 1200
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "bin/wrapper",
+            "bin/rootcanal"
+        ],
+        "post-update-cmd": [
+            "bin/wrapper",
+            "bin/rootcanal"
+        ]
+    }
 }
