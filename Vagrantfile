@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
     project     = ENV["#{env_prefix}_PROJECT"] || 'drupal-ci'
     #End config
 
-    config.vm.box = "pandora"
+    config.vm.box = "aczietlow/pandoras-box"
     path = "/var/www/#{project}.dev"
 
     config.vm.synced_folder ".", "/vagrant", :disabled => true

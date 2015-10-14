@@ -3,6 +3,8 @@
 .vagrant/
 bin/
 composer.lock
+www/
+.env
 
 # IDE files
 .idea/
