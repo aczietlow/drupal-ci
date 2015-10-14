@@ -13,7 +13,11 @@ while [ $# -gt 0 ]; do
 done
 
 drush="$base/bin/drush.php $drush_flags"
+echo "Symlink settings.php into our Drupal."
+ln -sf $base/cnf/settings.php $base/www/sites/default/
+
 pushd $base/www
+echo "Installing the Drupal."
 $drush si standard --site-name="drupal-ci" --account-pass=admin -y
 $drush dis -y overlay shortcuts comments toolbar
 $drush en -y admin_menu module_filter features strongarm

@@ -59,6 +59,9 @@ Vagrant.configure("2") do |config|
 
     config.vm.provision :shell, inline: <<SCRIPT
     set -ex
+    if [[ ! -f "#{path}/cnf/settings.php" ]]; then
+        su vagrant -c "cp #{path}/cnf/local.settings.php #{path}/cnf/settings.php;"
+    fi
     /usr/local/phantomjs --webdriver=8643 &> /dev/null &
     su vagrant -c 'cd #{path} && composer install;
     echo #{path}
