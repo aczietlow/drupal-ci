@@ -1,2 +1,13 @@
+# composer and vagrant generated files.
 /vendor/
+.vagrant/
+bin/
+composer.lock
+www/
+
+# Local configuration
+.env
+settings.php
+
+# IDE files
 .idea/

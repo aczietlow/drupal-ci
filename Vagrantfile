@@ -30,11 +30,15 @@ Vagrant.configure("2") do |config|
     project     = ENV["#{env_prefix}_PROJECT"] || 'drupal-ci'
     #End config
 
-    config.vm.box = "pandora"
-    path = "/var/www/sites/#{project}.dev"
+    config.vm.box = "aczietlow/pandoras-box"
+    path = "/var/www/#{project}.dev"
 
+    config.vm.synced_folder ".", "/vagrant", :disabled => true
+    config.vm.synced_folder ".", path, :nfs => true
+    config.vm.hostname = "#{project}.dev"
 
     config.vm.network "private_network", ip: "#{ip}"
+    config.ssh.forward_agent = true
 
     config.vm.provider :virtualbox do |v|
         v.name = "#{project}-box"
@@ -53,6 +57,15 @@ Vagrant.configure("2") do |config|
         v.vmx["memsize"] = "2048"
     end
 
-    config.ssh.forward_agent = true
+    config.vm.provision :shell, inline: <<SCRIPT
+    set -ex
+    if [[ ! -f "#{path}/cnf/settings.php" ]]; then
+        su vagrant -c "cp #{path}/cnf/local.settings.php #{path}/cnf/settings.php;"
+    fi
+    /usr/local/phantomjs --webdriver=8643 &> /dev/null &
+    su vagrant -c 'cd #{path} && composer install;
+    echo #{path}
+    cd #{path} && [[ -f .env ]] && source .env || cp env.dist .env && source env.dist && build/install.sh;'
+SCRIPT
 
 end
