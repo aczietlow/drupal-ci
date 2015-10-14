@@ -2,7 +2,7 @@
 /vendor/
 .vagrant/
 bin/
-comopser.lock
+composer.lock
 
 # IDE files
 .idea/
