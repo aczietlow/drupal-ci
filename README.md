@@ -13,3 +13,10 @@ towards supporting drupal in a composer workflow.
 
 A parser scans d.o. for project information and makes them available via composer. See https://www.drupal.org/node/1886820
 for more information.
+
+### Drupal Assemble
+
+By default composer will install dependencies to the /vendor directory. To build drupal, your custom and contrib modules,
+and libraries I'll be using craychee/rootcanal.
+
+Another alternative is to use Drupal installers. I need to look more into this in the future.

@@ -19,10 +19,19 @@
         "behat/behat": "3.0.*@dev",
         "drush/drush": "6.*",
         "drupal/drupal": "7.39",
-        "drupal/views": "7.3.x-dev"
+        "drupal/views": "7.3.x-dev",
+        "craychee/rootcanal": "dev-master"
     },
     "config": {
         "bin-dir": "bin",
         "process-timeout": 1200
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "bin/rootcanal"
+        ],
+        "post-update-cmd": [
+            "bin/rootcanal"
+        ]
     }
 }
