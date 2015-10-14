@@ -42,7 +42,7 @@ notes on the decisions made.
 
 ### Dependencies
 
-Let's deal with the elephant in the room. Drupal 7 isn't great and handling dependencies.
+Let's deal with the elephant in the room. Drupal 7 isn't great at handling dependencies.
 
 We'll be using composer handle our dependencies (including drupal). Fortunately there's been a great amount of work put 
 towards supporting drupal in a composer workflow. 
