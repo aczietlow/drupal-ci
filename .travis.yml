@@ -38,4 +38,4 @@ before_script:
 
 script:
   # Run tests on all content that does not depend on demo content.
-- bin/behat -f pretty,html --out ,out.html
+- bin/behat -f pretty
