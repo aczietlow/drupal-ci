@@ -1,0 +1,41 @@
+language: php
+
+php:
+- 5.6
+
+#cache:
+  #apt: true
+
+services:
+- mysql
+
+
+before_script:
+  # Apache webserver and PHP configuration
+- sudo apt-get update > /dev/null
+- sudo apt-get install -y -q --force-yes apache2 libapache2-mod-fastcgi
+- sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv
+  version-name)/etc/php-fpm.conf
+- sudo a2enmod rewrite actions fastcgi alias
+- echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- echo "sendmail_path=/bin/true" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
+- sudo cp -f cnf/travis.conf /etc/apache2/sites-available/default
+- sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)/www?g" --in-place /etc/apache2/sites-available/default
+- sudo service apache2 restart
+- echo "127.0.0.1 drupal-ci.dev" | sudo tee -a /etc/hosts
+- sudo phantomjs --webdriver=8643 &>/dev/null &
+  # MySQL database configuration
+- mysql -e 'set global max_allowed_packet=20000000;'
+- mysql -e 'set global query_cache_size=128000000;'
+- mysql -e 'create database drupalci;'
+  # Build the project.
+- cp cnf/travis.settings.php cnf/settings.php
+- composer self-update
+- composer install --dev --prefer-dist
+- build/install.sh
+- sudo chown -R travis:www-data www
+
+script:
+  # Run tests on all content that does not depend on demo content.
+- bin/behat -f pretty

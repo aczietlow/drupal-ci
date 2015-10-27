@@ -20,7 +20,12 @@
         "drush/drush": "6.*",
         "drupal/drupal": "7.39",
         "drupal/views": "7.3.x-dev",
+        "drush/drush": "6.*",
         "craychee/rootcanal": "dev-master"
+    },
+    "require-dev": {
+        "behat/behat": "3.0.*@dev",
+        "drupal/drupal-extension": "3.0.*@dev"
     },
     "config": {
         "bin-dir": "bin",
