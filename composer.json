@@ -19,8 +19,8 @@
         "behat/behat": "3.0.*@dev",
         "drush/drush": "6.*",
         "drupal/drupal": "7.39",
+        "drupal/workbench": "7.39",
         "drupal/views": "7.3.x-dev",
-        "drush/drush": "6.*",
         "craychee/rootcanal": "dev-master"
     },
     "require-dev": {
