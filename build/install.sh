@@ -17,3 +17,4 @@ drush="$base/bin/drush.php $drush_flags"
 pushd $base/www
 echo "Installing the Drupal."
 $drush si standard --site-name="drupal-ci" --account-pass=admin -y
+$drush en workbench
