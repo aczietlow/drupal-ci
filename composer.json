@@ -1,42 +1,43 @@
 {
-    "name": "zietlow/drupal-ci",
-    "type": "project",
-    "description": "Project to prove Drupal can use a good CI workflow.",
-    "minimum-stability": "dev",
-    "authors": [
-        {
-            "name": "chris.zietlow",
-            "email": "aczietlow@gmail.com"
-        }
-    ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "http://packagist.drupal-composer.org/"
-        }
-    ],
-    "require": {
-        "behat/behat": "3.0.*@dev",
-        "drush/drush": "6.*",
-        "drupal/drupal": "7.39",
-        "drupal/views": "7.3.x-dev",
-        "drush/drush": "6.*",
-        "craychee/rootcanal": "dev-master"
-    },
-    "require-dev": {
-        "behat/behat": "3.0.*@dev",
-        "drupal/drupal-extension": "3.0.*@dev"
-    },
-    "config": {
-        "bin-dir": "bin",
-        "process-timeout": 1200
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "bin/rootcanal"
-        ],
-        "post-update-cmd": [
-            "bin/rootcanal"
-        ]
+  "name": "zietlow/drupal-ci",
+  "type": "project",
+  "description": "Project to prove Drupal can use a good CI workflow.",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "authors": [
+    {
+      "name": "chris.zietlow",
+      "email": "aczietlow@gmail.com"
     }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://packagist.drupal-composer.org/"
+    }
+  ],
+  "require": {
+    "behat/behat": "3.0.*@dev",
+    "drush/drush": "6.*",
+    "drupal/drupal": "7.39",
+    "drupal/views": "7.3.x-dev",
+    "drush/drush": "6.*",
+    "craychee/rootcanal": "dev-master"
+  },
+  "require-dev": {
+    "behat/behat": "3.0.*@dev",
+    "drupal/drupal-extension": "3.0.*@dev"
+  },
+  "config": {
+    "bin-dir": "bin",
+    "process-timeout": 1200
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "bin/rootcanal"
+    ],
+    "post-update-cmd": [
+      "bin/rootcanal"
+    ]
+  }
 }
