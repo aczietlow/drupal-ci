@@ -26,8 +26,8 @@ Vagrant.configure("2") do |config|
 
     # Config
     env_prefix  = ENV['DRUPAL_VAGRANT_ENV_PREFIX'] || 'DRUPAL_VAGRANT'
-    ip          = ENV["#{env_prefix}_IP"] || '10.33.36.11'
-    project     = ENV["#{env_prefix}_PROJECT"] || 'drupal-ci'
+    ip          = ENV["#{env_prefix}_IP"] || '10.33.36.13'
+    project     = ENV["#{env_prefix}_PROJECT"] || 'piper'
     #End config
 
     config.vm.box = "aczietlow/pandoras-box"
